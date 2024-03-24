@@ -1,26 +1,31 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <!--  <img alt="Vue logo" src="./assets/logo.png">-->
+  <!--  <HelloWorld msg="Welcome to Your Vue.js App"/>-->
   <h1>To-Do List</h1>
+  <to-do-form v-on:todo-added="addToDo"></to-do-form>
   <ul>
     <li v-for="item in ToDoItems" :key="item.id">
-      <to-do-item :label="item.label" :done="true" :id="item.id"></to-do-item>
+      <to-do-item
+          :label="item.label"
+          :done="true"
+          :id="item.id"></to-do-item>
     </li>
   </ul>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-// import DemoComponent from "./components/DemoComponent.vue";
+// import HelloWorld from './components/HelloWorld.vue'
 import ToDoItem from "./components/ToDoItem.vue";
 import uniqueId from "lodash.uniqueid";
+import ToDoForm from "./components/ToDoForm";
 
 export default {
   name: 'App',
   components: {
     // 本地注册组件
-    HelloWorld,
+    // HelloWorld,
     ToDoItem,
+    ToDoForm,
   },
   data() {
     return {
@@ -47,6 +52,12 @@ export default {
         },
       ],
     }
+  },
+  methods: {
+    addToDo(toDoLabel) {
+      console.log("To-do added: ", toDoLabel);
+      this.ToDoItems.push({id:uniqueId('todo-'), label: toDoLabel, done: false});
+    },
   }
 }
 </script>
