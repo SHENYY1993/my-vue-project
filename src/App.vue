@@ -4,8 +4,9 @@
   <h1>To-Do List</h1>
   <ul>
     <li>
-      <demo-component></demo-component>
-      <demo-component label="My todo item"></demo-component>
+      <demo-component label="My todo item" :done="true"></demo-component>
+      <demo-component label="My todo item" :done="false"></demo-component>
+      <demo-component label="My todo item" :done="false"></demo-component>
     </li>
   </ul>
 </template>
