@@ -2,7 +2,7 @@
   <div class="custom-checkbox">
     <!--    <input type="checkbox" id="todo-item" checked="checked"/>-->
     <!--    <input type="checkbox" id="todo-item" v-bind:checked="isDone"/>-->
-    <input class="checkbox" type="checkbox" :id="id" v-bind:checked="isDone"/>
+    <input class="checkbox" type="checkbox" :id="id" v-bind:checked="isDone" v-on:change="$emit('checkbox-changed')"/>
 <!--    <label for="todo-item">{{ label }}</label>-->
     <label class="checkbox-label" :for="id">{{ label }}</label>
   </div>
